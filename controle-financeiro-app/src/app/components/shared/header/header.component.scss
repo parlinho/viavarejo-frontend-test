@@ -1,0 +1,68 @@
+@import "../styles/shared";
+
+.header {
+  background-color: $background;
+  grid-template-columns: 20px 40px auto 40px 20px;
+  grid-template-rows: 10px 46px 10px;
+
+  &__icon {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(../../../../assets/icons/logo.jpg);
+  }
+
+  &__h1 {
+    place-self: center stretch;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    align-items: center;
+    color: $dark-color;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+
+  &__menu-desktop {
+    display: none;
+    background-color: #fff;
+  }
+
+  &__menu-icon {
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-image: url(../../../../assets/icons/menu-icon.png);
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1024px) {
+  .header {
+    grid-template-columns: 20px 40px 200px auto 340px 20px;
+    grid-template-rows: 20px 40px 20px;
+
+    &__menu-desktop {
+      display: flex;
+      grid-column-start: 5;
+      grid-column-end: 6;
+      grid-row-start: 2;
+      align-items: center;
+
+      &-a {
+        text-align: center;
+        width: 33%;
+      }
+    }
+
+    &__menu-icon {
+      display: none;
+    }
+  }
+}
