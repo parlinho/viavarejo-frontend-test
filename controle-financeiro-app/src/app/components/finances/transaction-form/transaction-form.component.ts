@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../../../services/local-storage.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -24,9 +25,10 @@ export class TransactionFormComponent implements OnInit {
       return;
     }
     console.log(this.transactionForm.value);
+    this.LocalStorageService.setTransactionInLocalStorage(this.transactionForm);
   }
 
-  constructor() { }
+  constructor(private LocalStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.transactionForm = new FormGroup({
