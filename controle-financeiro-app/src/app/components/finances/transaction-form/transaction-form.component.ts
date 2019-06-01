@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-transaction-form',
@@ -7,13 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionFormComponent implements OnInit {
 
-  onSubmit() {
+  public transactionForm: FormGroup;
+  public transaction: any = {};
+  public isSubmitted = false;
 
+  @Output() transactionData = new EventEmitter();
+
+  get type() { return this.transactionForm.get('type'); }
+  get commodity() { return this.transactionForm.get('commodity'); }
+  get price() { return this.transactionForm.get('price'); }
+
+  onSubmit() {
+    this.isSubmitted = true;
+    if (this.transactionForm.invalid) {
+      return;
+    }
+    console.log(this.transactionForm.value);
   }
 
   constructor() { }
 
   ngOnInit() {
-
+    this.transactionForm = new FormGroup({
+      'type': new FormControl(this.transaction.type, Validators.required),
+      'commodity': new FormControl(this.transaction.alterEgo, Validators.required),
+      'price': new FormControl(this.transaction.price, Validators.required)
+    });
   }
 }
