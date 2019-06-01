@@ -1,5 +1,5 @@
 <section class="container">
-    <app-transaction-form  class="container__transactionform"></app-transaction-form>
+    <app-transaction-form  class="container__transactionform" (addTransactionEmitter)="reciverFeedback($event)"></app-transaction-form>
     <hr class="container__hr"/>
-    <app-transaction-list class="container__transactionlist"></app-transaction-list>
+    <app-transaction-list class="container__transactionlist" [transactionList]="transactionList"></app-transaction-list>
 </section>

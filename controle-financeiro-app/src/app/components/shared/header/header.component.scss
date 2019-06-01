@@ -1,5 +1,9 @@
 @import "../styles/shared";
 
+.background {
+  background-color: $background;
+}
+
 .header {
   background-color: $background;
   grid-template-columns: 20px 40px auto 40px 20px;
@@ -55,7 +59,7 @@
       grid-column-end: 1;
     }
 
-    &__h1{
+    &__h1 {
       grid-column-start: 2;
       grid-column-end: 2;
       text-align: left;
@@ -71,6 +75,10 @@
       &-a {
         text-align: center;
         width: 33%;
+      }
+
+      &-a.border-left {
+        border-left: 1px solid $dark-color;
       }
     }
 

@@ -1,4 +1,4 @@
-@import './components/shared/styles/shared';
+@import "./components/shared/styles/shared";
 
 .main {
   grid-gap: 30px;
@@ -25,12 +25,17 @@
     grid-area: footer;
     grid-row-start: 3;
   }
+
 }
 
-@media(min-width: 1200px){
+@media (min-width: 1200px) {
   .main {
     &__content {
       grid-template-columns: auto 1100px auto;
+    }
+
+    &__sidebar {
+      display: none;
     }
   }
 }

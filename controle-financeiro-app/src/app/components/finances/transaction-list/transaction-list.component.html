@@ -1,5 +1,5 @@
 <h3>Extrato de transações</h3>
-<table cellspacing="0">
+<table cellspacing="0" *ngIf="transactionList.length > 0">
   <thead>
     <tr>
       <th>Mercadoria</th>
@@ -7,18 +7,22 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><span>+</span>Heisenbahn</td>
-      <td class="text-align-right">R$ 57,90</td>
+    <tr *ngFor="let transaction of transactionList">
+      <td>
+        <span>{{ transaction.type === 'Compra' ? '-' : '+' }}</span>
+        {{ transaction.commodity }}</td>
+      <td class="text-align-right">{{ transaction.price | currency:'BRL' }}</td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
       <td>Total</td>
-      <td class="text-align-right">R$117,50</td>
+      <td class="text-align-right">{{ amount | currency:'BRL' }}</td>
     </tr>
     <tr>
-      <td colspan="2"><small>[LUCRO]</small></td>
+      <td colspan="2" *ngIf="amount > 0"><small>[LUCRO]</small></td>
+      <td colspan="2" *ngIf="amount < 0"><small>[PREJUÍZO]</small></td>
     </tr>
   </tfoot>
 </table>
+<p class="empty-list" *ngIf="transactionList.length <= 0">Não há nenhuma transação cadastrada.</p>

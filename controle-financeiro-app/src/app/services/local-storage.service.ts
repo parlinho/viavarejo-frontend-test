@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Transaction } from './../models/finances/finances.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
 
-  public getTransactionListFromLocalStorage() {
+  public getTransactionListFromLocalStorage(): Array<Transaction> {
     return JSON.parse(localStorage.getItem('transactionList') || '[]');
   }
 
@@ -13,7 +14,6 @@ export class LocalStorageService {
     let transactionListFromLocalStorage = this.getTransactionListFromLocalStorage();
     transactionListFromLocalStorage.unshift(transaction);
     localStorage.setItem('transactionList', JSON.stringify(transactionListFromLocalStorage));
-    console.log('transactionListFromLocalStorage: ', this.getTransactionListFromLocalStorage());
   }
 
   constructor() { }

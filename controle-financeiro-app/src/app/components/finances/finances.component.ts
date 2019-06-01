@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from './../../services/local-storage.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Transaction } from 'src/app/models/finances/finances.model';
 
 @Component({
   selector: 'app-finances',
@@ -7,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinancesComponent implements OnInit {
 
-  constructor() { }
+  public transaction: Transaction;
+  public transactionList: Array<Transaction>;
 
-  ngOnInit() {
-
+  public reciverFeedback(transaction: Transaction) {
+    this.transaction = transaction;
+    this.LocalStorageService.setTransactionInLocalStorage(transaction);
+    this.transactionList = this.LocalStorageService.getTransactionListFromLocalStorage();
   }
 
+  constructor(private LocalStorageService: LocalStorageService) { }
+
+  ngOnInit() {
+    this.transactionList = this.LocalStorageService.getTransactionListFromLocalStorage();
+  }
 }
+
+

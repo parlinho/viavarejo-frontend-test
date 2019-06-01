@@ -1,6 +1,7 @@
-import { LocalStorageService } from './../../../services/local-storage.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LocalStorageService } from './../../../services/local-storage.service';
+import { Transaction } from './../../../models/finances/finances.model';
 
 @Component({
   selector: 'app-transaction-form',
@@ -10,10 +11,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class TransactionFormComponent implements OnInit {
 
   public transactionForm: FormGroup;
-  public transaction: any = {};
+  public transaction: Transaction;
   public isSubmitted = false;
 
-  @Output() transactionData = new EventEmitter();
+  @Output() addTransactionEmitter = new EventEmitter();
 
   get type() { return this.transactionForm.get('type'); }
   get commodity() { return this.transactionForm.get('commodity'); }
@@ -25,16 +26,16 @@ export class TransactionFormComponent implements OnInit {
       return;
     }
     console.log(this.transactionForm.value);
-    this.LocalStorageService.setTransactionInLocalStorage(this.transactionForm.value);
+    this.addTransactionEmitter.emit(new Transaction(this.transactionForm.value));
   }
 
   constructor(private LocalStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.transactionForm = new FormGroup({
-      'type': new FormControl(this.transaction.type, Validators.required),
-      'commodity': new FormControl(this.transaction.alterEgo, Validators.required),
-      'price': new FormControl(this.transaction.price, Validators.required)
+      'type': new FormControl(null, Validators.required),
+      'commodity': new FormControl(null, Validators.required),
+      'price': new FormControl(null, Validators.required)
     });
   }
 }
