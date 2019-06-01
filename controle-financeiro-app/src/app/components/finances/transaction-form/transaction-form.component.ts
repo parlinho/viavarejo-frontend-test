@@ -25,7 +25,7 @@ export class TransactionFormComponent implements OnInit {
       return;
     }
     console.log(this.transactionForm.value);
-    this.LocalStorageService.setTransactionInLocalStorage(this.transactionForm);
+    this.LocalStorageService.setTransactionInLocalStorage(this.transactionForm.value);
   }
 
   constructor(private LocalStorageService: LocalStorageService) { }
