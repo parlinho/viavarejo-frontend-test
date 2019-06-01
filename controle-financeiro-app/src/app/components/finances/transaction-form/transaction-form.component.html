@@ -2,18 +2,34 @@
   <h3 class="transactionform__h3">Nova transação</h3>
   <label class="transactionform__label--transactiontype transactionform__label">
     Tipo da transação
-    <select type="select" formControlName="transactionType" class="transactionform__select">
+    <select type="select" formControlName="type" class="transactionform__select">
       <option value="compra">Compra</option>
       <option value="venda">Venda</option>
     </select>
+    <div *ngIf="type.invalid && isSubmitted" class="transactionform__input--invalid">
+      <div *ngIf="type.errors.required">
+        O campo é obrigatório.
+      </div>
+    </div>
   </label>
   <label class="transactionform__label--commodityname transactionform__label">
     Nome da mercadoria
-    <input type="text" formControlName="commodityName" placeholder="Input" class="transactionform__input">
+    <input type="text" formControlName="commodity" placeholder="Input" class="transactionform__input">
+    <div *ngIf="commodity.invalid && isSubmitted" class="transactionform__input--invalid">
+      <div *ngIf="commodity.errors.required">
+        O campo é obrigatório.
+      </div>
+    </div>
   </label>
   <label class="transactionform__label--price transactionform__label">
     Valor
-    <input type="text" formControlName="price" placeholder="R$ 0,00" class="transactionform__input">
+    <input type="text" formControlName="price" placeholder="R$ 0,00" class="transactionform__input" currencyMask
+      [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" maxlength="15">
+    <div *ngIf="price.invalid && isSubmitted" class="transactionform__input--invalid">
+      <div *ngIf="price.errors.required">
+        O campo é obrigatório.
+      </div>
+    </div>
   </label>
   <input type="submit" value="Adicionar transação" class="transactionform__submit">
 </form>

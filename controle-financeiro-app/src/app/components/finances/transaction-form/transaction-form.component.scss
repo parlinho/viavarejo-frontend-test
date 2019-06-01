@@ -32,12 +32,24 @@
   &__input {
     height: 35px;
     width: 98%;
+    text-align: left !important;
+
+    &--invalid {
+      font-size: 12px;
+      padding: 2px;
+      color: $invalid-feedback-color;
+    }
   }
+
   &__select {
     height: 37px;
     width: 100%;
   }
+
   &__submit {
+    grid-area: submit;
+    grid-row-start: 4;
+    grid-column-start: 2;
     background-color: $dark-color;
     border: none;
     color: $text-light-color;
@@ -45,33 +57,27 @@
     font-size: 12px;
   }
 
-  & .transactionform__label--transactiontype {
+  &__label--transactiontype {
     grid-area: type;
     grid-row-start: 1;
     grid-column-start: 2;
   }
-  & .transactionform__label--commodityname {
+
+  &__label--commodityname {
     grid-area: commodity;
     grid-row-start: 2;
     grid-column-start: 2;
   }
-  & .transactionform__label--price {
+
+  &__label--price {
     grid-area: price;
     grid-row-start: 3;
-    grid-column-start: 2;
-  }
-  & .transactionform__submit {
-    grid-area: submit;
-    grid-row-start: 4;
     grid-column-start: 2;
   }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  .wrapper {
-    grid-template-columns: 20px auto 20px;
-  }
   .transactionform {
     border: 1px solid $dark-color;
     border-radius: $border-radius;
@@ -85,7 +91,7 @@
       "inputs"
       "submit";
 
-    & .transactionform__h3 {
+    &__h3 {
       display: block;
       grid-area: title;
       grid-row-start: 1;
@@ -93,37 +99,33 @@
       grid-column-end: 4;
     }
 
-    & .transactionform__label--transactiontype {
+    &__label--transactiontype {
       grid-area: inputs;
       grid-row-start: 2;
       grid-column-start: 2;
       grid-column-end: 2;
     }
-    & .transactionform__label--commodityname {
+
+    &__label--commodityname {
       grid-area: inputs;
       grid-row-start: 2;
       grid-column-start: 3;
       grid-column-end: 4;
     }
-    & .transactionform__label--price {
+
+    &__label--price {
       grid-area: inputs;
       grid-row-start: 2;
       grid-column-start: 4;
       grid-column-end: 5;
     }
-    & .transactionform__submit {
+
+    &__submit {
       grid-area: submit;
       grid-row-start: 3;
       grid-column-start: 4;
       grid-column-end: 5;
     }
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .header {
-    // background-color: blue;
   }
 }
 
@@ -139,7 +141,7 @@
       "price"
       "submit";
 
-    & .transactionform__h3 {
+    &__h3 {
       display: block;
       grid-area: title;
       grid-row-start: 1;
@@ -166,11 +168,16 @@
       height: 35px;
       width: 98%;
     }
+
     &__select {
       height: 37px;
       width: 100%;
     }
+
     &__submit {
+      grid-area: submit;
+      grid-row-start: 5;
+      grid-column-start: 2;
       background-color: $dark-color;
       border: none;
       color: $text-light-color;
@@ -178,24 +185,21 @@
       font-size: 12px;
     }
 
-    & .transactionform__label--transactiontype {
+    &__label--transactiontype {
       grid-area: type;
       grid-row-start: 2;
       grid-column-start: 2;
     }
-    & .transactionform__label--commodityname {
+
+    &__label--commodityname {
       grid-area: commodity;
       grid-row-start: 3;
       grid-column-start: 2;
     }
-    & .transactionform__label--price {
+
+    &__label--price {
       grid-area: price;
       grid-row-start: 4;
-      grid-column-start: 2;
-    }
-    & .transactionform__submit {
-      grid-area: submit;
-      grid-row-start: 5;
       grid-column-start: 2;
     }
   }

@@ -68,18 +68,3 @@ table {
     }
   }
 }
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1024px) {
-  .container {
-    grid-template-columns: 40% 60%;
-    grid-column-gap: 20px;
-
-    &__transactionform {
-    }
-  }
-}

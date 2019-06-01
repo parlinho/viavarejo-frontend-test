@@ -1,17 +1,17 @@
 import { FinancesComponent } from './finances.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TransactionFormComponent } from './transaction-form/transaction-form.component';
-import { TransactionListComponent } from './transaction-list/transaction-list.component';
+import { TransactionFormModule } from './transaction-form/transaction-form-module';
+import { TransactionListModule } from './transaction-list/transaction-list-module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    TransactionFormComponent,
-    TransactionListComponent,
     FinancesComponent
   ],
   imports: [
+    TransactionFormModule,
+    TransactionListModule,
     CommonModule,
     ReactiveFormsModule
   ]

@@ -5,7 +5,7 @@
   grid-template-rows: auto 2px auto;
   grid-row-gap: 30px;
 
-  hr {
+  &__hr {
     background-color: $border-color-gray;
   }
 }
@@ -15,7 +15,7 @@
   .container {
     grid-template-rows: auto auto;
 
-    hr {
+    &__hr {
       display: none;
     }
   }
@@ -30,8 +30,5 @@
   .container {
     grid-template-columns: 40% auto;
     grid-column-gap: 20px;
-
-    &__transactionform {
-    }
   }
 }
