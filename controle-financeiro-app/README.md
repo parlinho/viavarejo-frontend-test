@@ -1,3 +1,8 @@
+# Instruções para rodar o projeto
+
+- Run npm i
+- Run ng serve
+
 # ControleFinanceiroApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
